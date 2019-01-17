@@ -1,0 +1,7 @@
+name: ChestShop-LegacyIds
+version: '${bukkit.plugin.version}'
+main: com.acrobot.chestshop.legacyids.ChestShopLegacyIds
+depend: [ChestShop]
+authors: [Phoenix616]
+description: '${project.description}'
+api-version: '1.13'

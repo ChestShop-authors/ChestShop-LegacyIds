@@ -1,0 +1,5 @@
+convert:
+  # Old, now removed numeric ID values
+  numeric-ids: true
+  # Old, pre-1.13/flattening Material names.
+  legacy-names: true
