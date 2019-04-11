@@ -54,7 +54,7 @@ public final class ChestShopLegacyIds extends JavaPlugin implements Listener {
             return;
         }
 
-        String matKey = event.getMaterialString().toUpperCase(Locale.ENGLISH) + DELIMITER + event.getData();
+        String matKey = event.getMaterialString().toUpperCase(Locale.ENGLISH).replace(' ', '_') + DELIMITER + event.getData();
         if (cache.containsKey(matKey)) {
             event.setMaterial(cache.get(matKey));
             return;
@@ -69,12 +69,11 @@ public final class ChestShopLegacyIds extends JavaPlugin implements Listener {
                 mapping = IdMappings.getById(event.getMaterialString());
             }
         } else if (convertLegacyNames) {
-            String matStr = event.getMaterialString().replaceAll("([a-z])([A-Z1-9])", "$1_$2").replace(' ', '_');
             if (event.getData() > 0) {
                 mapping = IdMappings.get(IdMappings.IdType.LEGACY, matKey, DELIMITER);
             }
             if (mapping == null || mapping.getNote() != null) {
-                mapping = IdMappings.getByLegacyType(matStr);
+                mapping = IdMappings.getByLegacyType(event.getMaterialString().replaceAll("([a-z])([A-Z1-9])", "$1_$2").replace(' ', '_'));
             }
         }
         Material material = null;
